@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      /*   * {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+      } */
+        /* .msg {
+            display: block;
+            margin: 10px auto 0;
+            padding: 10px;
+            width: 700px;
+            height: 300px;
+            color: #333;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;            
+        } */
+        .tips {
+            position: absolute;
+            z-index: 99;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="J_msg" class="msg"></textarea>
+<script src="E:/jquery-1.7.1.js"></script>
+<script>
+    ;(function($){
+        var $doc = $(document);
+        var $msg = $('#J_msg');
+        var $tips = $('#J_tips');
+        if (!$tips.length) {
+            $tips = $('<div id="J_tips" class="tips"></div>');
+            $('body').append($tips);
+        }
+
+        $doc.on('click', function(e) {
+            var pageX = e.pageX,
+                pageY = e.pageY;
+
+            $tips.text('文本文本文本').css({
+                top: pageY,
+                left: pageX
+            });                    
+        });
+    })(jQuery);
+</script>
+</body>
+</html>
